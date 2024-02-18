@@ -64,39 +64,3 @@ async function getWeatherData(cityName) {
 
 const city = 'Cincinnati'; // Replace with the desired city
 getWeatherData(city);
-
-function setCookie(cname, cvalue, exdays) {
-    const currentDate = new Date();
-    currentDate.setTime(currentDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expiresAt = "expires=" + currentDate.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-
-  function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
-  function checkCookie() {
-    let lastVisit = getCookie("Last Visit");
-    if (lastVisit != "") {
-      alert("Welcome back!! Your last visit was on " + lastVisit);
-    } else {
-      alert("Welcome to my Home page!")
-      setCookie("Last Visit", new Date(), 365);
-    }
-  }
-
-  // Call the checkCookie function when the page loads
-  window.onload = checkCookie();
