@@ -26,6 +26,22 @@
   position: relative;
     }
   </style>
+  <script>
+    function setCookies() {
+    var currentDate = new Date();
+    var lastVisit = localStorage.getItem("lastVisit");
+
+    if (!lastVisit) {
+        localStorage.setItem("lastVisit", currentDate.toISOString());
+        alert("Welcome to my homepage!");
+    } else {
+        var lastVisitDate = new Date(lastVisit);
+        alert("Welcome back! Your last visit was on " + lastVisitDate);
+    }
+}
+
+setCookies();
+  </script>
 </head>
 <body>
     <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
