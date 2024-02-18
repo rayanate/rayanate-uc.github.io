@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details</title>
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Add your custom styles here */
+    body {
+      background-color: #f8f9fa;
+      
+    }
+    .course-container {
+      /* max-width: 600px; */
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+  height: 100vh;
+  background: url("../img/hero-bg.jpg") top right;
+  background-size: cover;
+  position: relative;
+    }
+  </style>
+</head>
 <body>
+    <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
 
-<h1>My First Heading</h1>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="index.html">Portfolio</a></li>
 
-<p>My first paragraph.</p>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    
+      </header>
+  <div class="container course-container">
+    <h2>Course Details</h2>
+    <hr>
 
+    <!-- Course Information -->
+    <div class="row">
+      <div class="col">
+        <h3>Web Application Programming and Hacking</h3>
+        <p><strong>Instructor:</strong> Dr. Phu Phung</p>
+        <p><strong>Description:</strong> In this course, students will study basic web application development with front-end
+
+            (HTML5, JavaScript, CSS) and back-end (PHP/MySQL). Web application vulnerabilities and attacks will be introduced and explored with hands-on exercises on the range. Secure programming principles and
+            
+            practices will be introduced to avoid potential web application vulnerabilities and attacks.</p>
+      </div>
+    </div>
+
+    <!-- Course Curriculum -->
+    <h4>Course Curriculum</h4>
+    <ul>
+        <li><a class="nav-link scrollto active" href="https://github.com/rayanate/waph-rayanate/tree/main/labs/lab0">Lab 0 - Development Environment Setup</a>
+        <p>In this Lab, we have setup virtual machine and software installations in the VM. The git repository setup is also done as part of this lab.</p>
+        </li>
+        <li><a class="nav-link scrollto active" href="https://github.com/rayanate/waph-rayanate/tree/main/labs/lab1">Lab 1 - Foundations of Web</a>
+        <p>
+          1. Familiar with the Wireshark tool and HTTP protocol.
+          2. Understanding HTTP using telnet and Wireshark.
+          3. CGI Web applications in C
+          4. A simple PHP Web Application with user input.
+          5. Understanding HTTP GET and POST requests
+        </p>
+        </li>
+        <li><a class="nav-link scrollto active" href="https://github.com/rayanate/waph-rayanate/tree/main/labs/lab2">Lab 2.1 - Front-end Web development</a>
+        <p>
+          1. Basic HTML with forms, and JavaScript
+          Developed a simple HTML file with basic tags, an image of your headshot, and a form.
+          2. Javascript code to display analog clock, display clock, show/hide email etc.
+        </p>
+        </li>
+        <li><a class="nav-link scrollto active" href="https://github.com/rayanate/waph-rayanate/tree/main/labs/lab2">Lab 2.2 - Front-end development with JavaScript CSS, and jQuery</a>
+        <p>
+          1. Ajax, CSS, jQuery, and Web API integration
+          Ajax, CSS, and jQuery handson has been performed in this lab.
+        </p>
+        </li>
+        <li><a class="nav-link scrollto active" href="https://github.com/rayanate/waph-rayanate/tree/main/labs/Hackathon1">Hackathon 1 - Cross-site scripting attacks and defenses</a>
+        <p>
+          This hackathon consists of multiple hands-on exercises, where you would perform cross-site scripting attacks on multiple levels to understand the vulnerabilities as well as defense methods.
+        </p>
+        </li>
+    </ul>
+  </div>
+
+  <!-- Bootstrap JS and Popper.js CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
