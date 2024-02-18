@@ -1,0 +1,102 @@
+var shown = false;
+function showhideEmail() {
+    if (shown) {
+        document.getElementById('email').innerHTML = "Show my email";
+        shown = false;
+    }
+    else {
+        var myemail = "<a href='mailto:rayanate" + "@" +
+            "mail.uc.edu'> rayanate" + "@" + "mail.uc.edu</a>";
+        document.getElementById('email').innerHTML = myemail;
+        shown = true;
+    }
+}
+
+function fetchJoke() {
+    // Make a request to the JokeAPI
+    $.get('https://v2.jokeapi.dev/joke/Any', function (data) {
+        // Update the content of the element with the retrieved joke
+        $('#joke-container').html(`
+            <p>${data.setup || ''}</p>
+            <p>${data.delivery || data.joke || ''}</p>
+          `);
+    }).fail(function (error) {
+        console.error('Error fetching joke:', error);
+    });
+}
+
+// Initial call to fetch a joke when the page loads
+fetchJoke();
+
+// Set up an interval to fetch a new joke every 1 minute (60000 milliseconds)
+setInterval(fetchJoke, 60000);
+
+const apiKey = 'rD28vkNDNAtUjRvS4jcgLJnBII2IbEtZpFY7PtMO';
+
+fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+        const apodImage = document.getElementById('apodImage');
+        apodImage.src = data.url;
+        apodImage.alt = data.title;
+    })
+    .catch(error => {
+        console.error('Error fetching APOD image:', error);
+    });
+
+async function getWeatherData(cityName) {
+    const API_KEY = '82bf333e96f9446884281940ce9c06b1'; // Replace with your actual Weatherbit API key
+    const API_URL = `https://api.weatherbit.io/v2.0/current?city=${cityName}&key=${API_KEY}`;
+
+    try {
+        const weatherResponse = await fetch(API_URL);
+        const responseData = await weatherResponse.json();
+
+        // Update UI with weather data
+        document.getElementById('city').innerText = responseData.data[0].city_name;
+        document.getElementById('weather-icon').src = `https://www.weatherbit.io/static/img/icons/${responseData.data[0].weather.icon}.png`;
+        document.getElementById('temperature').innerText = `Temperature: ${responseData.data[0].temp}°C`;
+        document.getElementById('description').innerText = `Description: ${responseData.data[0].weather.description}`;
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+    }
+}
+
+const city = 'Cincinnati'; // Replace with the desired city
+getWeatherData(city);
+
+function setCookie(cname, cvalue, exdays) {
+    const currentDate = new Date();
+    currentDate.setTime(currentDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expiresAt = "expires=" + currentDate.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function checkCookie() {
+    let lastVisit = getCookie("Last Visit");
+    if (lastVisit != "") {
+      alert("Welcome back!! Your last visit was on " + lastVisit);
+    } else {
+      alert("Welcome to my Home page!")
+      setCookie("Last Visit", new Date(), 365);
+    }
+  }
+
+  // Call the checkCookie function when the page loads
+  window.onload = checkCookie();
